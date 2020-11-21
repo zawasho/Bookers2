@@ -1,0 +1,30 @@
+<div class= "box">
+<div class= "col-xs-3">
+  <h2>User Info</h2>
+
+  <%= attachment_image_tag @user, :image, :fill, 100, 100 %>
+  <h5>name</h5>
+  <%= @user.name %>
+  <h5>introduction</h5>
+  <%= @user.introduction %>
+  <%= link_to "edit",edit_user_path(@user.id) %>
+
+  <%= form_for(@book)  do |f| %>
+  <h2>New book</h2>
+  <h5>Title</h5>
+  <%= f.text_field :title %>
+  <h5>Opinion</h5>
+  <%= f.text_field :body %>
+  <%= f.submit 'Create Book' %>
+  <% end %>
+</div>
+
+<div class= "col-xs-9">
+  <h2>Books</h2>
+  <table>
+    <tr>
+    <th>Title</th><th>Opinion</th>
+    </tr>
+  </table>
+</div>
+</div>
