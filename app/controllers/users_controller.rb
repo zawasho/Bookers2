@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, {only: [:edit,:update,]}
 
+  def ensure_correct_user
+     @user = User.find(params[:id])
+     if @user.id != current_user.id
+     redirect_to user_path(current_user.id)
+     end
+  end
   def new
     @book = Book.new
   end
@@ -31,8 +37,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   	@user.update(user_params)
   	if @user.save
-  		redirect_to user_path(@user.id)
       flash[:notice] = "Profile was successfully updated."
+      redirect_to user_path(@user.id)
   	else
   		render :edit
   	end
@@ -43,13 +49,7 @@ class UsersController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
   def user_params
-    params.require(:user).permit(:name,:image,:introduction)
-  end
-  def ensure_correct_user
-     @user = User.find(params[:id])
-     if @user.id != current_user.id
-     redirect_to user_path(current_user.id)
-     end
+    params.require(:user).permit(:name,:profile_image,:introduction)
   end
 end
 

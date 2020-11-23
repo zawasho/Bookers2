@@ -1,6 +1,6 @@
 <div class= "col-md-3">
   <h2>User info</h2>
-  <%= attachment_image_tag @user, :image, :fill, 100, 100, fallback: "no_image.jpg" ,format: 'no_image.jpg' %>
+  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" ,format: 'no_image.jpg' %>
 
   <h5>name</h5>
   <%= @user.name %>
@@ -8,20 +8,16 @@
   <%= @user.introduction %>
   <%= link_to"", edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %>
 
-       <!-- form_for部分 -->
+   <h2>New book</h2>
   <%= form_for(@book,  url: books_path) do |f| %>
 
-
-        <h2>New book</h2>
         <h4>Title</h4>
         <%= f.text_field :title,class: "col-xs-12" %>
 
         <h4>Opinion</h4>
         <%= f.text_field :body,class: "col-xs-12" %>
-        <nav>
 
         <%= f.submit 'Create Book',class: "col-xs-12 btn btn-success" %>
-        </nav>
         <% end %>
 </div>
 <div class= "col-md-8 offset-md-1">
@@ -37,7 +33,7 @@
 		<% @users.each do |user| %>
 		<tbody>
 	        <tr>
-				<td><%= attachment_image_tag user, :image, :fill, 30, 30, fallback: "no_image.jpg" ,format: 'no_image.jpg' %></td>
+				<td><%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg" ,format: 'no_image.jpg' %></td>
 				<td><%= user.name %></td>
 				<td><%= link_to("Show","/users/#{user.id}") %></td>
 		    </tr>

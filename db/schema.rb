@@ -36,13 +36,10 @@ ActiveRecord::Schema.define(version: 2020_11_22_032226) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.string "title"
-    t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_id"
+    t.string "profile_image_id"
     t.text "introduction"
-    t.string "books"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

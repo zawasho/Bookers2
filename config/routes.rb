@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   resources :books
-  resources :users,only:[:show,:edit,:update]
+  resources :users,only:[:show,:edit,:update,:index]
   get "home/about" => "homes#about"
-  get "/users" => "users#index"
-  post "/books/create" => "books#create"
 end
