@@ -1,19 +1,19 @@
 <h1>User info</h1>
 
-<% if @user.errors.any? %>
-<h3><%="#{@user.errors.full_messages.count} errors prohibited this obj being saved:" %></h3>
-<% end %>
-
+<% if @user.errors %>
+<ul>
 <% @user.errors.full_messages.each do |message| %>
 <li><%= message %></li>
+<% end %>
+</ul>
 <% end %>
 
 <%= form_for (@user) do |f| %>
 <p>Name</p>
 <%= f.text_field :name %>
 <p>Image</p>
-<%= f.attachment_field :profile_image %>
+<%= f.attachment_field :image %>
 <p>Introduction</p>
 <%= f.text_area :introduction %>
-<%= f.submit "Update Profile" %>
+<%= f.submit "Update User" %>
 <% end %>

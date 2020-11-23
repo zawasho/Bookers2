@@ -1,4 +1,11 @@
 <h1>Editing Book</h1>
+<%if @book.errors.any? %>
+<h3><%="#{@book.errors.full_messages.count} errors prohibited this obj being saved:" %></h3>
+<%end%>
+
+<% @book.errors.full_messages.each do |message| %>
+<li><%= message %></li>
+<% end %>
 <%= form_for(@book, url: book_path(@book.id)) do |f| %>
 
     <h4>Title</h4>
@@ -12,5 +19,6 @@
   </nav>
 　<% end %>
 
-<%= link_to "show",book_path(@book.id) %>
+<%= link_to "Show",book_path(@book.id) %>
+|
 <%= link_to "Back",books_path %>
